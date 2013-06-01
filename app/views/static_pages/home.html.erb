@@ -4,16 +4,20 @@
 
             <div class="row span6 offset3 overlay">
 
-                  <center>
+                  <div class="center">
                         <div id="login">
 			  <%= form_for :session, url: { controller: :sessions, action: :create } do |f| %>
 			  <%= f.text_field :email, placeholder: "email" %><br />
 			  <%= f.password_field :password, placeholder: "password"  %><br />
 			  <%= f.submit :Login, :class => "btn btn-primary" %>
-			  <% end %>
-                          
+        <% end %>
+
+        <%= link_to ({controller: :users, action: :new}) do %>
+                  <button class="btn">Sign in</button>
+        <% end %>
+                         
                          </div>
-                  </center>
+                  </div>
 
                 <div class="span2">&nbsp;</div>
 
