@@ -42,17 +42,12 @@ function addPointers(vectorLayer, lat, lon)
 
             success: function(msg)
             {
-                console.log(msg);
-                alert(msg);
-                vett = JSON.parse(msg);
-
-
-                for(var i = 0; i  < vett.length; i++)
+                for(var i = 0; i  < msg.length; i++)
                 {
                     var feature = new OpenLayers.Feature.Vector
                     (
-                        new OpenLayers.Geometry.Point( vett[i]["longitude"], vett[i]["latitude"] ).transform(epsg4326, projectTo),
-                        {description:'This is ' + obj[i]["description"]} ,
+                        new OpenLayers.Geometry.Point( msg[i]["longitude"], msg[i]["latitude"] ).transform(epsg4326, projectTo),
+                        {description:'This is ' + msg[i]["description"]} ,
                         {externalGraphic: "marker.png", graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25 }
                     );
 

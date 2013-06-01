@@ -35,7 +35,7 @@ class IssuesController < ApplicationController
 
   def fetch_nearest
     @issues = Issue.near( [ params[:latitude], params[:longitude] ] )
-    render @issues.to_json
+    render :json => @issues.to_json
   end
 
 
