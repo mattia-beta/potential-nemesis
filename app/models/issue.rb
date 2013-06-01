@@ -15,6 +15,11 @@
 #
 
 class Issue < ActiveRecord::Base
+
   belongs_to :user
   attr_accessible :description, :genre, :image, :location, :name, :priority
+
+  validates_presence_of :name, :description, :location
+  
+
 end

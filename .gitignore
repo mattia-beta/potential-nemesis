@@ -2,7 +2,7 @@
 bin/
 bin-debug/
 bin-release/
-db/development.sqlite3
+db/*.sqlite3
 
 # Other files and folders
 .settings/
@@ -10,9 +10,8 @@ db/development.sqlite3
 tmp/
 log/
 *~
-
+*#*#
 .DS_Store
-config/initializers/
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
