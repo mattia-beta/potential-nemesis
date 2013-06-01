@@ -1,37 +1,20 @@
-<div id="center login">
-        <%= image_tag('logo.png') %>
-        <%= form_for :session, url: { controller: :sessions, action: :create } do |f| %>
-        <%= f.text_field :email, placeholder: "email" %><br />
-        <%= f.password_field :password, placeholder: "password"  %><br />
-        <%= f.submit :Login, :class => "btn btn-primary" %>
-        <% end %>
-        <%= link_to ({controller: :users, action: :new}) do %>
-        <button class="btn">Sign in</button>
-        <% end %>
-</div>
-
 <div id="homepage">
-   
-   &nbsp;
+    <center>
+        <div id="login" class="overlay">
+                    <%= image_tag 'logo.png', :size => "300x200" %>
+                        <%= form_for :session, url: { controller: :sessions, action: :create } do |f| %>
+                        <%= f.text_field :email, placeholder: "email" %><br />
+                        <%= f.password_field :password, placeholder: "password"  %><br />
+                        <%= f.submit :Login, :class => "btn btn-primary" %>
 
+                        <%= link_to "Sign in", new_user_path, :class => "btn" %>
+
+                   <% end %>
+        </div>
+    </center>
+
+
+    <div id="home-maps">
+       &nbsp;
+    </div>
 </div>
-
-<script> 
-    var lat            = 47.35387;
-    var lon            = 8.43609;
-    var zoom           = 18;
- 
-    var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-    var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-    var position       = new OpenLayers.LonLat(lon, lat).transform( fromProjection, toProjection);
- 
-    map = new OpenLayers.Map("homepage");
-    var mapnik         = new OpenLayers.Layer.OSM();
-    map.addLayer(mapnik);
- 
-    var markers = new OpenLayers.Layer.Markers( "Markers" );
-    map.addLayer(markers);
-    markers.addMarker(new OpenLayers.Marker(position));
- 
-    map.setCenter(position, zoom);
-</script>
