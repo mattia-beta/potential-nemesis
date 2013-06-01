@@ -21,7 +21,7 @@ function create_map(div_name, latitudine, longitudine)
     var feature = new OpenLayers.Feature.Vector(
         new OpenLayers.Geometry.Point( longitudine, latitudine ).transform(epsg4326, projectTo),
         {description:'You are here'} ,
-        {externalGraphic: 'marker.png', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25 }
+        {externalGraphic: '/assets/marker.png', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25 }
     );
     vectorLayer.addFeatures(feature);
 
@@ -48,7 +48,7 @@ function addPointers(vectorLayer, lat, lon)
                     (
                         new OpenLayers.Geometry.Point( msg[i]["longitude"], msg[i]["latitude"] ).transform(epsg4326, projectTo),
                         {description:'This is ' + msg[i]["description"]} ,
-                        {externalGraphic: "marker.png", graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25 }
+                        {externalGraphic: "/assets/marker.png", graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25 }
                     );
 
                     vectorLayer.addFeatures(feature);
