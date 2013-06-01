@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>PotentialNemesis</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+    <head>
+          <title>PotentialNemesis</title>
+          <%= stylesheet_link_tag    "application", :media => "all" %>
+          <%= javascript_include_tag "application" %>
+          <%= csrf_meta_tags %>
+    </head>
 
-<%= yield %>
+    <body>
 
-</body>
+        <%= render 'layouts/menu' %>
+
+        <div class="container">
+            <%= yield %>
+        </div>
+
+    </body>
 </html>
