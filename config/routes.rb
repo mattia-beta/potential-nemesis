@@ -1,9 +1,9 @@
 PotentialNemesis::Application.routes.draw do
 
-    root to: "static_pages#home"
+  root to: "static_pages#home"
   get "issues/fetch" => "issues#fetch_nearest"
-    resources :users
-    resources :issues
+  resources :users
+  resources :issues
 
   # sessions routes
   get "sessions/new" => "sessions#new"

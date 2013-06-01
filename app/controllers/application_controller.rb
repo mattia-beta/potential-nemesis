@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     elsif !cookies[:token].nil?
       @current_user ||= User.find_by_token( cookies[:token] )
     else
-      render root_url
+      redirect_to root_url
     end
   end
 

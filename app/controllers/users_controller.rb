@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  load_and_authorize_resource
     def new
         @user = User.new
     end
@@ -7,7 +7,8 @@ class UsersController < ApplicationController
     def create
         @user = User.create(params[:user])
         if @user.save
-           redirect_to @user
+          session[:user_id] = @user.id
+          redirect_to @user
         else
            render 'new'
         end
