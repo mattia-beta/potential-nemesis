@@ -7,8 +7,10 @@
                         <%= f.text_field :email, placeholder: "email" %><br />
                         <%= f.password_field :password, placeholder: "password"  %><br />
                         <%= f.submit :Login, :class => "btn btn-primary" %>
+                   <p class="btn" id="sign-btn">Sign in</p>
                    <% end %>
-                   <button class="btn" id="sign-btn">Sign in</button>
+
+                   
         </div>
 
         <div id="sign-up" class="overlay center">
@@ -17,10 +19,10 @@
                     <%= f.text_field :name, placeholder: "name" %><br />
                     <%= f.text_field :email, placeholder: "email" %><br />
                     <%= f.password_field :password, placeholder: "password" %><br />
-
                     <%= f.submit "Crea", :class => "btn btn-primary" %>
+                <p class="btn" id="cancel-btn">Cancel</p>
                 <% end %>
-                <button class="btn" id="cancel-btn">Cancel</button>
+                
         </div>
     </div>
 
