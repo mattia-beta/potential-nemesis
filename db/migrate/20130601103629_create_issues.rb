@@ -5,7 +5,9 @@ class CreateIssues < ActiveRecord::Migration
       t.text :description
       t.integer :priority
       t.string :image
-      t.string :location
+      t.string :address
+      t.float :latitude
+      t.float :longitude
       t.string :genre
       t.references :user
 

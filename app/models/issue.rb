@@ -17,9 +17,9 @@
 class Issue < ActiveRecord::Base
 
   belongs_to :user
-  attr_accessible :description, :genre, :image, :location, :name, :priority
+  attr_accessible :description, :genre, :image, :address, :latitude, :longitude, :name, :priority
 
-  validates_presence_of :name, :description, :location
+  validates_presence_of :name, :description, :address
   
 
 end
