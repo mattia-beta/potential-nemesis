@@ -1,7 +1,6 @@
 #homepage
 {
-    #home-maps
-    {
+    #home-maps {
         img { max-width: none; }
 
         position: fixed;
@@ -15,13 +14,25 @@
         z-index: -1;
     }
 
-    #login
+
+    #sign-up {
+        position: absolute;
+        visibility: hidden;
+        padding: 40px;
+    }
+
+    #login {
+        position: absolute;
+          visibility: visible; 
+          padding: 40px;
+    }
+
+    #content
     {
         z-index: 0;
         margin-left: 30%;
         margin-right: 30%;
-
-        padding-top: 40px;
+        margin-top: 0px;
         padding-bottom: 40px;
     }
 
@@ -32,6 +43,7 @@
         background-color: rgba(255, 255, 255, 0.7);
     }
 }
+
 
 
 
