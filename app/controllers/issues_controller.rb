@@ -3,6 +3,7 @@ class IssuesController < ApplicationController
 
   #load_and_authorize_resource
   def index
+    @issues = Issue.all
   end
 
 
@@ -16,7 +17,7 @@ class IssuesController < ApplicationController
 
 
   def update
-    if current_user.issues.find( params[:issue][:issue_id] ).update_attributes( params[:issues] )
+    if Issue.find( params[:issue][:issue_id] ).update_attributes( :priority => params[:issue][:priority] )
       render_js :updated
     else
       render_error

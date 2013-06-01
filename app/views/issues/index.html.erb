@@ -1,1 +1,22 @@
-
+<%= render :partial => "layouts/menu" %>
+<div class="blocco bar">
+  <h2>All open issues</h2>
+  <% @issues.each do |i| %>
+  <div class="well span3">
+    <b>Submitter : <%= i.user.name.capitalize %><br />
+      Name : <%= i.name %></b><br />
+    Description : <%= i.description %><br />
+    Address : <%= i.address %><br />
+    <button class="btn btn-info btn-mini" latitude="<%= i.latitude %>" longitude="<%= i.longitude %>">
+      <i class="icon-search icon-white"></i>
+	&nbsp;Show on Map
+    </button><br />
+    Update priority : <br />
+    <%= form_for :issue, url: { controller: :issues, action: :update }, :remote => true do |f| %>
+    <%= f.hidden_field :issue_id, :value => i.id %>
+    <%= f.select :priority, options_for_select([[1,1],[2,2],[3,3],[4,4],[5,5]]) %>
+    <%= f.submit :update, :class => "btn btn-mini btn-primary" %>
+    <% end %>
+  </div>
+  <% end %>
+</div>

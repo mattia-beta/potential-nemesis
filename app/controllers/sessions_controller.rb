@@ -8,7 +8,11 @@ class SessionsController < ApplicationController
     if @user and @user.authenticate( params[:session][:password] )
       session[:user_id] = @user.id
       cookies.permanent[:token] = @user.token
-      redirect_to user_path( @user )
+      if current_user.role.include? "user"
+        redirect_to user_path( @user )
+      elsif current_user.role.include? "global"
+        redirect_to controller: :issues, action: :index
+      end
     else
       redirect_to root_url
     end
