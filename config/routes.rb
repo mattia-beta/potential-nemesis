@@ -4,9 +4,10 @@ PotentialNemesis::Application.routes.draw do
   get "issues/fetch" => "issues#fetch_nearest"
     resources :users
     resources :issues
-    resources :sessions
 
+  # sessions routes
   get "sessions/new" => "sessions#new"
   post "sessions/create" => "sessions#create"
+  get "sessions/destroy" => "sessions#destroy"
 
 end
