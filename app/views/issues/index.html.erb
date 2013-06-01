@@ -1,0 +1,18 @@
+<h2>create</h2>
+
+<%= form_for :issue, url: { controller: :issues, action: :create }, :remote => true do |f| %>
+<%= f.text_field :name, placeholder: "name"%><br />
+<%= f.text_field :description, placeholder: "description" %><br />
+<%= f.text_field :address, placeholder: "location" %><br />
+<%= f.text_field :genre, placeholder: "type"%><br />
+<%= f.submit %><br />
+<% end %>
+
+<% Issue.all.each do |i| %>
+<b><%= i.name.capitalize %></b><br />
+<%= i.description %><br />
+<%= i.address %><br />
+<%= i.genre %><br />
+<%= link_to 'destroy', issue_path( i.id ) , :method => :delete %><br />
+<hr></hr>
+<% end %>
