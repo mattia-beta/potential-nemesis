@@ -1,16 +1,18 @@
-<br />
-<br />
-<%= form_for @user, :html => { :multipart => true } do |f| %>
+<%= render "layouts/menu" %>
 
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<div class="row span12 blocco">
+    <%= form_for @user, :html => { :multipart => true } do |f| %>
 
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
 
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
 
-    <%= f.submit "Crea", :class => "btn btn-primary" %>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
 
-<% end %>
+        <%= f.submit "Crea", :class => "btn btn-primary" %>
+
+    <% end %>
+</div>

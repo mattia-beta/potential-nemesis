@@ -1,5 +1,6 @@
 
-$(document).ready(function()
+
+function create_map(div_name)
 {
     var lat            = 47.35387;
     var lon            = 8.43609;
@@ -19,6 +20,12 @@ $(document).ready(function()
 
     map.setCenter(position, zoom);
 
+}
+
+
+$(document).ready(function()
+{
+    create_map("home-maps");
 });
 
 

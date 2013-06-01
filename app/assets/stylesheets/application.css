@@ -13,6 +13,7 @@
  *= require_tree .
  */
 
-.center {
-	text-align: center;
+.blocco
+{
+    margin-top: 40px;
 }
