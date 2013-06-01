@@ -13,9 +13,7 @@ $(document).ready(function() {
 </script>
 
 <div id="homepage">
-    
     <div id="content">
-
         <div id="login" class="overlay center">
                     <%= image_tag 'logo.png', :size => "300x200" %>
                         <%= form_for :session, url: { controller: :sessions, action: :create } do |f| %>
