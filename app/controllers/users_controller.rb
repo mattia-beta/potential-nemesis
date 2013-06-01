@@ -36,8 +36,6 @@ class UsersController < ApplicationController
 
 
     def show
-        @user = User.find(params[:id])
-        @issues = Issues.where("user_id = #{params[:id]}")
     end
 
 end
