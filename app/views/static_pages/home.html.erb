@@ -6,13 +6,12 @@
 
                   <center>
                         <div id="login">
-                              <label>Username</label>
-                              <input type="text" name="name" id="name">   <br>
-
-                              <label>Password</label>
-                              <input type="password" name="password" id="password">   <br>
-
-                              <a href="#" class="btn btn-primary">Login</a>
+			  <%= form_for :session, url: { controller: :sessions, action: :create } do |f| %>
+			  <%= f.text_field :email, placeholder: "email" %><br />
+			  <%= f.password_field :password, placeholder: "password"  %><br />
+			  <%= f.submit :Login, :class => "btn btn-primary" %>
+			  <% end %>
+                          
                          </div>
                   </center>
 
