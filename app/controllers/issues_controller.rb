@@ -26,7 +26,8 @@ class IssuesController < ApplicationController
 
 
   def destroy
-    if current_user.issues.destroy( params[:id] )
+    @issue = current_user.issues.find( params[:id] )
+    if @issue.destroy
       render_js :destroyed
     else
       render_error
