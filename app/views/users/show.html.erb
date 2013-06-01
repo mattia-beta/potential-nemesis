@@ -35,7 +35,7 @@
 
       <br />
       <hr class="row" />
-          <%= form_for :issues, url: { controller: :issues, action: :create }, :html => { :multipart => true }, :remote => true do |f| %>
+          <%= form_for :issue, url: { controller: :issues, action: :create }, :html => { :multipart => true }, :remote => true do |f| %>
               <%= f.text_field :name, :placeholder => 'Insert a title' %>
               <%= f.select(:genre, options_for_select([['Select a type',0],['Earthquake','Earthquake' ],['Flood', 'Flood'],['Bush Fire', 'Bush Fire'],['Cyclone', 'Cyclone']])) %>
               <%= f.text_area :description, :size => '64x9', :placeholder => 'Insert a description' %>
