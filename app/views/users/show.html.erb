@@ -2,38 +2,41 @@
 <%= render 'layouts/menu' %>
 
 <div class="container">
-<div class="row blocco" id="profile">
-</div> 
+  <div class="row blocco" id="profile">
 
 
-<div class="row-fluid">
-  <div class="span3">
-    <h1>My issues</h1>
+    <div class="row-fluid">
+      <div class="span3">
+        <h1>My issues</h1>
 
-    <% current_user.issues.all.each do |i| %>
-        <div id="<%= i.id %>">
-          <div style="float:right">
-            <%= link_to 'destroy', issue_path( i.id ) , :method => :delete, :remote => true %>
-          </div>
+        <% current_user.issues.all.each do |i| %>
+            <div id="<%= i.id %>">
+              <div style="float:right">
+                <%= link_to 'destroy', issue_path(i.id), :method => :delete, :remote => true %>
+              </div>
 
-        <h2><%= i.name.capitalize %></h2><br />
-        Description: <%= i.description %><br />
-        Address: <%= i.address %><br />
-        Genre: <%= i.genre %><br />
-        <br />
-        <hr></hr>
+              <h2><%= i.name.capitalize %></h2><br/>
+              Description: <%= i.description %>
+              <br/>
+              Address: <%= i.address %>
+              <br/>
+              Genre: <%= i.genre %>
+              <br/>
+              <br/>
+              <hr></hr>
+            </div>
+        <% end %>
+
+      </div>
+
+      <div class="span9">
+        <div id="user-map">
+          &nbsp;
         </div>
-    <% end %>
+      </div>
 
-  </div>
-
-  <div class="span9">
-      <div id="user-map">
-        &nbsp;
     </div>
-</div>
-
-</div>
+  </div>
 
 </div>
 
@@ -41,10 +44,10 @@
 <h2>create</h2>
 
 <%= form_for :issue, url: { controller: :issues, action: :create }, :remote => true do |f| %>
-<%= f.text_field :name, placeholder: "name"%><br />
-<%= f.text_field :description, placeholder: "description" %><br />
-<%= f.text_field :address, placeholder: "location" %><br />
-<%= f.text_field :genre, placeholder: "type"%><br />
-<%= f.submit %><br />
+    <%= f.text_field :name, placeholder: "name" %><br />
+    <%= f.text_field :description, placeholder: "description" %><br />
+    <%= f.text_field :address, placeholder: "location" %><br />
+    <%= f.text_field :genre, placeholder: "type" %><br />
+    <%= f.submit %><br />
 <% end %>
 
