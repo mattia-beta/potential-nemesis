@@ -20,5 +20,17 @@ $(document).ready(function()
     {
         navigator.geolocation.watchPosition(showPosition);
     }
+
+    $("#sign-btn").click( function()
+    {
+        $("#login").css({"visibility": "hidden"});
+        $("#sign-up").css({"visibility": "visible"});
+    });
+
+    $("#cancel-btn").click( function()
+    {
+        $("#login").css({"visibility": "visible"});
+        $("#sign-up").css({"visibility": "hidden"});
+    });
 });
 

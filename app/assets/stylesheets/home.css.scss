@@ -1,7 +1,11 @@
 #homepage
 {
-    #home-maps {
-        img { max-width: none; }
+    #home-maps
+    {
+        img
+        {
+           max-width: none;
+        }
 
         position: fixed;
         margin-top: 50px;
@@ -15,13 +19,15 @@
     }
 
 
-    #sign-up {
+    #sign-up
+    {
         position: absolute;
         visibility: hidden;
         padding: 40px;
     }
 
-    #login {
+    #login
+    {
         position: absolute;
           visibility: visible; 
           padding: 40px;
