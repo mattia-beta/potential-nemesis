@@ -2,6 +2,7 @@
 bin/
 bin-debug/
 bin-release/
+db/development.sqlite3
 
 # Other files and folders
 .settings/
