@@ -1,8 +1,6 @@
 body
 {
-  background-image: url('maps.png');
-  background-repeat: no-repeat;
-  background-size: 100%;
+
 }
 
 .blocco
@@ -12,6 +10,14 @@ body
 
 #homepage
 {
+    background-image: url('maps.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    position: fixed;
+    height: 100%;
+    top: 0;
+
     #login
     {
         padding-top: 20px;
