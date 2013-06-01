@@ -1,7 +1,10 @@
 class IssuesController < ApplicationController
+
+
   #load_and_authorize_resource
   def index
   end
+
 
   def create
     if @issue = current_user.issues.new( params[:issue] ).save
@@ -11,6 +14,7 @@ class IssuesController < ApplicationController
     end
   end
 
+
   def update
     if current_user.issues.find( params[:issue][:issue_id] ).update_attributes( params[:issues] )
       render_js :updated
@@ -18,6 +22,7 @@ class IssuesController < ApplicationController
       render_error
     end
   end
+
 
   def destroy
     if current_user.issues.destroy( params[:id] )
@@ -27,12 +32,12 @@ class IssuesController < ApplicationController
     end
   end
 
+
   def fetch_nearest
     @issues = Issue.near( [ params[:latitude], params[:longitude] ] )
-    respond_to do |format|
-      format.js { render :success => true, :json => @issues.to_json( :only => [ :name, :description, :latitude, :longitude ] ) }
-    end
+    render :json => @issues.to_json
   end
+
 
   private
 
@@ -41,6 +46,7 @@ class IssuesController < ApplicationController
       format.js { render :action => script }
     end
   end
+
 
   def render_error
     respond_to do |format|

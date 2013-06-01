@@ -1,39 +1,41 @@
 <%= render 'layouts/menu' %>
 
-
 <div class="row blocco" id="profile">
+</div> 
 
-  <div class="span4" id="bar-form">
-        <div class="row span4">
-             <b>Cespuglio in fiamme</b>
 
-             <span>
-                    E' tutto in fiammee
-             </span>
-        </div>
+<div class="row-fluid">
+  <div class="span4">
+    <h1>My issues</h1>
   </div>
 
-  <div class="span8" id="demoMap">
-    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-    <script>
-        map = new OpenLayers.Map("mapdiv");
-        map.addLayer(new OpenLayers.Layer.OSM());
-
-        var lonLat = new OpenLayers.LonLat( -0.1279688 ,51.5077286 )
-                .transform(
-                        new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-                        map.getProjectionObject() // to Spherical Mercator Projection
-                );
-
-        var zoom=16;
-
-        var markers = new OpenLayers.Layer.Markers( "Markers" );
-        map.addLayer(markers);
-
-        markers.addMarker(new OpenLayers.Marker(lonLat));
-
-        map.setCenter (lonLat, zoom);
-    </script>
+  <div class="span8">
+    mappa
   </div>
+</div>
+  
+  
+
+  
 
 </div>
+
+
+<h2>create</h2>
+
+<%= form_for :issue, url: { controller: :issues, action: :create }, :remote => true do |f| %>
+<%= f.text_field :name, placeholder: "name"%><br />
+<%= f.text_field :description, placeholder: "description" %><br />
+<%= f.text_field :address, placeholder: "location" %><br />
+<%= f.text_field :genre, placeholder: "type"%><br />
+<%= f.submit %><br />
+<% end %>
+
+<% current_user.issues.all.each do |i| %>
+<b><%= i.name.capitalize %></b><br />
+<%= i.description %><br />
+<%= i.address %><br />
+<%= i.genre %><br />
+<%= link_to 'destroy', issue_path( i.id ) , :method => :delete, :remote => true %><br />
+<hr></hr>
+<% end %>

@@ -25,6 +25,66 @@ function create_map(div_name, latitudine, longitudine)
     );
     vectorLayer.addFeatures(feature);
 
-    map.addLayer(vectorLayer);
+    addPointers(vectorLayer, latitudine, longitudine);
 
+    map.addLayer(vectorLayer);
+}
+
+
+function addPointers(vectorLayer, lat, lon)
+{
+        $.ajax(
+        {
+            type: "GET",
+            url: "/issues/fetch",
+            data: {latitude: lat, longitude: lon},
+            dataType: "json",
+
+            success: function(msg)
+            {
+                for(var i = 0; i  < msg.length; i++)
+                {
+                    var feature = new OpenLayers.Feature.Vector
+                    (
+                        new OpenLayers.Geometry.Point( msg[i]["longitude"], msg[i]["latitude"] ).transform(epsg4326, projectTo),
+                        {description:'This is ' + msg[i]["description"]} ,
+                        {externalGraphic: "marker.png", graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25 }
+                    );
+
+                    vectorLayer.addFeatures(feature);
+                }
+
+            },
+
+            error: function()
+            {
+                alert("Chiamata fallita!!!");
+            }
+        });
+
+
+   /* for(var i = 0; i < vett.length; i++)
+    {
+        ico_url = "";
+        switch(vett[i]["hospital_type"])
+        {
+            case "1": ico_url = "img/h_p.png"; break;
+            case "2": ico_url = "img/h_h.png"; break;
+            case "3": ico_url = "img/b_h.png"; break;
+            case "4": ico_url = "img/a_h.png"; break;
+            default: ico_url = "img/marker.png"; break;
+        }
+
+// Define markers as "features" of the vector layer:
+        var feature = new OpenLayers.Feature.Vector
+        (
+            new OpenLayers.Geometry.Point( vett[i]["longitude"], vett[i]["latitude"] ).transform(epsg4326, projectTo),
+            {description:'This is ' + obj[i]["hospital_name"] + "<br/> <a href='#' onclick='detail(" + obj[i]["ID_hospital"] + ")'>detail</a>"} ,
+            {externalGraphic: ico_url, graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25 }
+        );
+
+        vectorLayer.addFeatures(feature);
+
+        console.log("ADDO --> " + vett[i]["hospital_name"]);
+    }  */
 }
