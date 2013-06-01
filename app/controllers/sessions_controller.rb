@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       cookies.permanent[:token] = @user.token
       redirect_to user_path( @user )
     else
-      redirect_to roor_url
+      redirect_to root_url
     end
   end
 

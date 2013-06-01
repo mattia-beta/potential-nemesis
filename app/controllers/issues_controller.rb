@@ -4,7 +4,7 @@ class IssuesController < ApplicationController
   end
 
   def create
-    if @issue = Issue.new( params[:issue] ).save
+    if @issue = current_user.issues.new( params[:issue] ).save
       render_js :created
     else
       render_error
@@ -12,7 +12,7 @@ class IssuesController < ApplicationController
   end
 
   def update
-    if Issue.find( params[:issue][:issue_id] ).update_attributes( params[:issues] )
+    if current_user.issues.find( params[:issue][:issue_id] ).update_attributes( params[:issues] )
       render_js :updated
     else
       render_error
@@ -20,7 +20,7 @@ class IssuesController < ApplicationController
   end
 
   def destroy
-    if Issue.destroy( params[:id] )
+    if current_user.issues.destroy( params[:id] )
       render_js :destroyed
     else
       render_error

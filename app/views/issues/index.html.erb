@@ -8,11 +8,11 @@
 <%= f.submit %><br />
 <% end %>
 
-<% Issue.all.each do |i| %>
+<% current_user.issues.all.each do |i| %>
 <b><%= i.name.capitalize %></b><br />
 <%= i.description %><br />
 <%= i.address %><br />
 <%= i.genre %><br />
-<%= link_to 'destroy', issue_path( i.id ) , :method => :delete %><br />
+<%= link_to 'destroy', issue_path( i.id ) , :method => :delete, :remote => true %><br />
 <hr></hr>
 <% end %>
