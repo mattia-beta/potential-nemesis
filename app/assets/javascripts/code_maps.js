@@ -42,8 +42,6 @@ function addPointers(vectorLayer, lat, lon)
 
             success: function(msg)
             {
-                alert(msg);
-
                 for(var i = 0; i  < msg.length; i++)
                 {
                     var feature = new OpenLayers.Feature.Vector
