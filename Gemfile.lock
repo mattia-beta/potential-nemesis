@@ -30,6 +30,7 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     builder (3.0.4)
+    cancan (1.6.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -104,6 +105,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cancan
   coffee-rails (~> 3.2.1)
   jquery-rails
   rails (= 3.2.12)
