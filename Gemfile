@@ -9,7 +9,6 @@ gem 'sqlite3'
 gem 'cancan'
 gem 'annotate'
 gem 'geocoder'
-gem 'openlayers-rails'
 
 #bootstrap
 gem "therubyracer"
