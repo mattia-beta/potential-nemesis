@@ -5,18 +5,7 @@
          
                   
                   <div class="center">
-                        <div id="login">
-        <%= image_tag('logo.png') %>
-			  <%= form_for :session, url: { controller: :sessions, action: :create } do |f| %>
-			  <%= f.text_field :email, placeholder: "email" %><br />
-			  <%= f.password_field :password, placeholder: "password"  %><br />
-			  <%= f.submit :Login, :class => "btn btn-primary" %>
-        <% end %>
-        <%= link_to ({controller: :users, action: :new}) do %>
-        <button class="btn">Sign in</button>
-        <% end %>
-                         
-                         </div>
+                        
                   </div>
                     
             <div class="span2">&nbsp;</div>
@@ -45,3 +34,15 @@
  
     map.setCenter(position, zoom);
 </script>
+
+<div id="login">
+        <%= image_tag('logo.png') %>
+        <%= form_for :session, url: { controller: :sessions, action: :create } do |f| %>
+        <%= f.text_field :email, placeholder: "email" %><br />
+        <%= f.password_field :password, placeholder: "password"  %><br />
+        <%= f.submit :Login, :class => "btn btn-primary" %>
+        <% end %>
+        <%= link_to ({controller: :users, action: :new}) do %>
+        <button class="btn">Sign in</button>
+        <% end %>
+</div>
