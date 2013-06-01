@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
   validates :email, :presence => true
   validates :name, :presence => true, :format => {:with => CHARS_AND_NUMS}
-  validates :password, :presence => true, :on => :create
+  validates_presence_of :password, :on => :create
 
   private
 
