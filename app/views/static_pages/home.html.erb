@@ -1,21 +1,22 @@
-<div class="row" id="homepage">
-  
-   <div class="span12" id="maps-home">
-            <div class="row span6 offset3 overlay">
-         
-                  
-                  <div class="center">
-                        
-                  </div>
-                    
-            <div class="span2">&nbsp;</div>
+<div id="center login">
+        <%= image_tag('logo.png') %>
+        <%= form_for :session, url: { controller: :sessions, action: :create } do |f| %>
+        <%= f.text_field :email, placeholder: "email" %><br />
+        <%= f.password_field :password, placeholder: "password"  %><br />
+        <%= f.submit :Login, :class => "btn btn-primary" %>
+        <% end %>
+        <%= link_to ({controller: :users, action: :new}) do %>
+        <button class="btn">Sign in</button>
+        <% end %>
+</div>
 
-          </div>
-   </div>
+<div id="homepage">
+   
+   &nbsp;
 
 </div>
 
-<script>
+<script> 
     var lat            = 47.35387;
     var lon            = 8.43609;
     var zoom           = 18;
@@ -34,15 +35,3 @@
  
     map.setCenter(position, zoom);
 </script>
-
-<div id="login">
-        <%= image_tag('logo.png') %>
-        <%= form_for :session, url: { controller: :sessions, action: :create } do |f| %>
-        <%= f.text_field :email, placeholder: "email" %><br />
-        <%= f.password_field :password, placeholder: "password"  %><br />
-        <%= f.submit :Login, :class => "btn btn-primary" %>
-        <% end %>
-        <%= link_to ({controller: :users, action: :new}) do %>
-        <button class="btn">Sign in</button>
-        <% end %>
-</div>

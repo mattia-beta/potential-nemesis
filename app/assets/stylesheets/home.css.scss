@@ -1,21 +1,16 @@
-body
-{
-
-}
-
-.blocco
-{
-   margin-top: 40px;
-}
-
 #homepage
-{   z-index: -1;
+{   
     img { max-width: none; }
 
 
     position: fixed;
+    margin-top: 50px;
+    width: 100%;
     height: 100%;
+    margin: 0px;
+    padding: 0px;
     top: 0;
+    z-index: -1;
 
     #login
     {
@@ -30,3 +25,9 @@ body
     }
 
 }
+
+#login {
+    position: fixed;
+    z-index: 0;
+}
+
