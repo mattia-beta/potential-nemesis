@@ -12,3 +12,7 @@
  *= require bootstrap_and_overrides
  *= require_tree .
  */
+
+.center {
+	text-align: center;
+}
