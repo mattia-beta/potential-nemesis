@@ -8,6 +8,7 @@ gem 'rails', '3.2.12'
 gem 'sqlite3'
 gem 'cancan'
 gem 'annotate'
+gem 'geocoder'
 
 # Gems used only for assets and not required
 # in production environments by default.
