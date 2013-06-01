@@ -1,20 +1,47 @@
+<script>
+$(document).ready(function() {
+    $("#sign-btn").click( function() {
+        $("#login").css({"visibility": "hidden"});
+        $("#sign-up").css({"visibility": "visible"});
+    });
+
+    $("#cancel-btn").click( function() {
+        $("#login").css({"visibility": "visible"});
+        $("#sign-up").css({"visibility": "hidden"});
+    });
+});
+</script>
+
 <div id="homepage">
-    <center>
-        <div id="login" class="overlay">
+    
+    <div id="content">
+
+        <div id="login" class="overlay center">
                     <%= image_tag 'logo.png', :size => "300x200" %>
                         <%= form_for :session, url: { controller: :sessions, action: :create } do |f| %>
                         <%= f.text_field :email, placeholder: "email" %><br />
                         <%= f.password_field :password, placeholder: "password"  %><br />
                         <%= f.submit :Login, :class => "btn btn-primary" %>
-
-                        <%= link_to "Sign in", new_user_path, :class => "btn" %>
-
                    <% end %>
+                   <button class="btn" id="sign-btn">Sign in</button>
         </div>
-    </center>
+
+        <div id="sign-up" class="overlay center">
+            <%= image_tag 'logo.png', :size => "300x200" %>
+                    <%= form_for :user, :html => { :multipart => true } do |f| %>
+                    <%= f.text_field :name, placeholder: "name" %><br />
+                    <%= f.text_field :email, placeholder: "email" %><br />
+                    <%= f.password_field :password, placeholder: "password" %><br />
+
+                    <%= f.submit "Crea", :class => "btn btn-primary" %>
+                <% end %>
+                <button class="btn" id="cancel-btn">Cancel</button>
+        </div>
+    </div>
 
 
     <div id="home-maps">
        &nbsp;
     </div>
 </div>
+
