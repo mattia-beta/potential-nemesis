@@ -1,33 +1,30 @@
 
-
-function create_map(div_name)
+function create_map(div_name, latitudine, longitudine)
 {
-    var lat            = 47.35387;
-    var lon            = 8.43609;
-    var zoom           = 18;
+    console.log("Tue cordinate:  " + latitudine + " ; " + longitudine);
 
-    var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-    var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-    var position       = new OpenLayers.LonLat(lon, lat).transform( fromProjection, toProjection);
+    map = new OpenLayers.Map(div_name);
+    map.addLayer(new OpenLayers.Layer.OSM());
 
-    map = new OpenLayers.Map("home-maps");
-    var mapnik         = new OpenLayers.Layer.OSM();
-    map.addLayer(mapnik);
+    epsg4326 = new OpenLayers.Projection("EPSG:4326"); //WGS 1984 projection
+    projectTo = map.getProjectionObject(); //The map projection (Spherical Mercator)
 
-    var markers = new OpenLayers.Layer.Markers( "Markers" );
-    map.addLayer(markers);
-    markers.addMarker(new OpenLayers.Marker(position));
+    var lonLat = new OpenLayers.LonLat(longitudine, latitudine ).transform(epsg4326, projectTo);
 
-    map.setCenter(position, zoom);
+    var zoom = 14;
+
+    map.setCenter (lonLat, zoom);
+
+    vectorLayer = new OpenLayers.Layer.Vector("Overlay");
+
+    // Define markers as "features" of the vector layer:
+    var feature = new OpenLayers.Feature.Vector(
+        new OpenLayers.Geometry.Point( longitudine, latitudine ).transform(epsg4326, projectTo),
+        {description:'You are here'} ,
+        {externalGraphic: 'img/marker.png', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25 }
+    );
+    vectorLayer.addFeatures(feature);
+
+    map.addLayer(vectorLayer);
 
 }
-
-
-$(document).ready(function()
-{
-    create_map("home-maps");
-});
-
-
-
-
