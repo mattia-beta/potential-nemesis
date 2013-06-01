@@ -64,6 +64,8 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     multi_json (1.7.4)
+    openlayers-rails (0.0.3)
+      railties (>= 3.1)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -129,6 +131,7 @@ DEPENDENCIES
   geocoder
   jquery-rails
   less-rails
+  openlayers-rails
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
   sqlite3

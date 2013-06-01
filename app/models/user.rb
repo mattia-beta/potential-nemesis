@@ -14,12 +14,22 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :name, :password
 
+  # before create generate a cookie token
+  before_save :create_token
+
   has_many :issues
+  has_secure_password
 
   CHARS_AND_NUMS = /^[a-zA-Z0-9\s]*$/
 
   validates :email, :presence => true
   validates :name, :presence => true, :format => {:with => CHARS_AND_NUMS}
-  validates :password, :presence => true
+  validates :password, :presence => true, :on => :create
+
+  private
+
+  def create_token
+    self.token = SecureRandom.urlsafe_base64
+  end
 
 end
