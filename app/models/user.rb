@@ -12,7 +12,7 @@
 
 class User < ActiveRecord::Base
 
-  attr_accessible :email, :name, :password
+  attr_accessible :email, :name, :password, :role
 
   # before create generate a cookie token
   before_save :create_token

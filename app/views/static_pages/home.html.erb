@@ -1,20 +1,45 @@
+
 <div id="homepage">
-    <center>
-        <div id="login" class="overlay">
+    <div class="row-fluid">
+    <div class="span4"></div>
+    <div class="span4">
+    <div id="content">
+        <div id="login" class="overlay center">
                     <%= image_tag 'logo.png', :size => "300x200" %>
                         <%= form_for :session, url: { controller: :sessions, action: :create } do |f| %>
                         <%= f.text_field :email, placeholder: "email" %><br />
                         <%= f.password_field :password, placeholder: "password"  %><br />
                         <%= f.submit :Login, :class => "btn btn-primary" %>
-
-                        <%= link_to "Sign in", new_user_path, :class => "btn" %>
-
+                   <p class="btn" id="sign-btn">Sign in</p>
                    <% end %>
+
+                   
         </div>
-    </center>
+
+        <div id="sign-up" class="overlay center">
+            <%= image_tag 'logo.png', :size => "300x200" %>
+                    <%= form_for :user, url:{ controller: :users, action: :create }, :html => { :multipart => true } do |f| %>
+                    <%= f.text_field :name, placeholder: "name" %><br />
+                    <%= f.text_field :email, placeholder: "email" %><br />
+                    <%= f.password_field :password, placeholder: "password" %><br />
+                    <%= f.submit "Crea", :class => "btn btn-primary" %>
+                <p class="btn" id="cancel-btn">Cancel</p>
+                <% end %>
+                
+        </div>
+    </div>
+    </div>
+    <div class="span4"></span>
+    </div>
 
 
     <div id="home-maps">
        &nbsp;
     </div>
+    
+
 </div>
+
+
+<%= javascript_include_tag "home.js" %>
+
