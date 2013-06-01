@@ -8,7 +8,7 @@ class IssuesController < ApplicationController
 
 
   def create
-    if @issue = current_user.issues.new( params[:issue] ).save
+    if current_user.issues.new( params[:issue] ).save
       render_js :created
     else
       render_error

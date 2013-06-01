@@ -1,53 +1,59 @@
 <%= javascript_include_tag "user_show.js" %>
 <%= render 'layouts/menu' %>
 
-<div class="container">
-  <div class="row blocco" id="profile">
+<div id="profile" class="container">
+<div class="row blocco"></div>
 
 
-    <div class="row-fluid">
-      <div class="span3">
-        <h1>My issues</h1>
+<div class="row-fluid">
+  <div class="span4">
 
-        <% current_user.issues.all.each do |i| %>
-            <div id="<%= i.id %>">
-              <div style="float:right">
-                <%= link_to 'destroy', issue_path(i.id), :method => :delete, :remote => true %>
-              </div>
+    <div id="my-issues">
+    <h1>My issues</h1>
+    <p class="btn btn-primary" id="issue-btn">Add issue!</p>
+      <br />
+      <hr class="row" />
+    <% current_user.issues.all.each do |i| %>
+        <div id="<%= i.id %>">
+          <div style="float:right">
+            <%= link_to 'destroy', issue_path( i.id ) , :method => :delete, :remote => true %>
+          </div>
 
-              <h2><%= i.name.capitalize %></h2><br/>
-              Description: <%= i.description %>
-              <br/>
-              Address: <%= i.address %>
-              <br/>
-              Genre: <%= i.genre %>
-              <br/>
-              <br/>
-              <hr></hr>
-            </div>
-        <% end %>
-
-      </div>
-
-      <div class="span9">
-        <div id="user-map">
-          &nbsp;
+        <h2><%= i.name.capitalize %></h2><br />
+        Description: <%= i.description %><br />
+        Address: <%= i.address %><br />
+        Genre: <%= i.genre %><br />
+        <br />
+        <hr />
         </div>
-      </div>
+    <% end %>
+     </div>
+
+    <div id="add-issue">
+          <h3>Report an issue</h3>
+      <p class="btn btn-primary" id="my-issue-btn">My issues</p>
+
+      <br />
+      <hr class="row" />
+          <%= form_for :issues, url: { controller: :issues, action: :create }, :html => { :multipart => true }, :remote => true do |f| %>
+              <%= f.text_field :name, :placeholder => 'Insert a title' %>
+              <%= f.select(:genre, options_for_select([['Select a type',0],['Earthquake','Earthquake' ],['Flood', 'Flood'],['Bush Fire', 'Bush Fire'],['Cyclone', 'Cyclone']])) %>
+              <%= f.text_area :description, :size => '64x9', :placeholder => 'Insert a description' %>
+              <br><br>
+              <%= f.submit "Report", :class => "btn btn-primary" %>
+          <% end %>
 
     </div>
   </div>
 
+  <div class="span8">
+      <div id="user-map">
+        &nbsp;
+    </div>
 </div>
 
+</div>
 
-<h2>create</h2>
+</div>
 
-<%= form_for :issue, url: { controller: :issues, action: :create }, :remote => true do |f| %>
-    <%= f.text_field :name, placeholder: "name" %><br />
-    <%= f.text_field :description, placeholder: "description" %><br />
-    <%= f.text_field :address, placeholder: "location" %><br />
-    <%= f.text_field :genre, placeholder: "type" %><br />
-    <%= f.submit %><br />
-<% end %>
 

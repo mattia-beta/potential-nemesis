@@ -6,9 +6,37 @@
 #profile
 {
 
+  #user-map{
+    img {
+      max-width: none;
+    }
 
-      #user-map
-      {
-           overflow: auto;
-      }
+    position: fixed;
+    margin-top: 50px;
+    width: 100%;
+    height: 110%;
+    margin-top: -40px;
+    padding: 0px;
+    top: 0;
+    z-index: -1;
+  }
+
+  #add-issue
+  {
+    visibility: hidden;
+
+    h3
+    {
+      color: red;
+    }
+
+  }
+
+  #my-issues {
+    position: absolute;
+    visibility: visible;
+
+  }
+
 }
+
