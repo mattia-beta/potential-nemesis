@@ -27,6 +27,13 @@ class IssuesController < ApplicationController
     end
   end
 
+  def fetch_nearest
+    @issues = Issue.near( [ params[:latitude], params[:longitude] ] )
+    respond_to do |format|
+      format.js { render :success => true, :json => @issues.to_json( :only => [ :name, :description, :latitude, :longitude ] ) }
+    end
+  end
+
   private
 
   def render_js ( script )
