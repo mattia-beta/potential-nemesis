@@ -34,8 +34,8 @@ class IssuesController < ApplicationController
 
 
   def fetch_nearest
-    @issues = ActiveSupport::JSON.encode(Issue.near( [ params[:latitude], params[:longitude] ] ))
-    render :json => @issues
+    @issues = Issue.near( [ params[:latitude], params[:longitude] ] )
+    render :json => @issues.to_json
   end
 
 
