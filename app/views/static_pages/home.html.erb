@@ -28,7 +28,7 @@ $(document).ready(function() {
 
         <div id="sign-up" class="overlay center">
             <%= image_tag 'logo.png', :size => "300x200" %>
-                    <%= form_for :user, :html => { :multipart => true } do |f| %>
+                    <%= form_for :user, url:{ controller: :users, action: :create }, :html => { :multipart => true } do |f| %>
                     <%= f.text_field :name, placeholder: "name" %><br />
                     <%= f.text_field :email, placeholder: "email" %><br />
                     <%= f.password_field :password, placeholder: "password" %><br />
