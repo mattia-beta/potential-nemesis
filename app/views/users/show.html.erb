@@ -1,22 +1,39 @@
+<%= javascript_include_tag "home.js" %>
 <%= render 'layouts/menu' %>
 
+<div class="container">
 <div class="row blocco" id="profile">
 </div> 
 
 
 <div class="row-fluid">
-  <div class="span4">
+  <div class="span3">
     <h1>My issues</h1>
+
+    <% current_user.issues.all.each do |i| %>
+        <div id="<%= i.id %>">
+          <div style="float:right">
+            <%= link_to 'destroy', issue_path( i.id ) , :method => :delete, :remote => true %>
+          </div>
+
+        <h2><%= i.name.capitalize %></h2><br />
+        Description: <%= i.description %><br />
+        Address: <%= i.address %><br />
+        Genre: <%= i.genre %><br />
+        <br />
+        <hr></hr>
+        </div>
+    <% end %>
+
   </div>
 
-  <div class="span8">
-    mappa
-  </div>
+  <div class="span9">
+      <div id="home-maps">
+        &nbsp;
+    </div>
 </div>
-  
-  
 
-  
+</div>
 
 </div>
 
@@ -31,11 +48,3 @@
 <%= f.submit %><br />
 <% end %>
 
-<% current_user.issues.all.each do |i| %>
-<b><%= i.name.capitalize %></b><br />
-<%= i.description %><br />
-<%= i.address %><br />
-<%= i.genre %><br />
-<%= link_to 'destroy', issue_path( i.id ) , :method => :delete, :remote => true %><br />
-<hr></hr>
-<% end %>
