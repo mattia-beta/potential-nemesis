@@ -21,6 +21,6 @@ class Issue < ActiveRecord::Base
   geocoded_by :address, :latitude => :latitude, :longitude => :longitude
   after_validation :geocode
 
-  validates_presence_of :name, :description, :address
+  validates_presence_of :name, :description
 
 end

@@ -16,3 +16,46 @@
 //= require OpenLayers.js
 //= require code_maps
 // require_tree .
+
+// SHOW HIDDEN HOME PAGE
+$(document).ready(function()
+{
+    if (navigator.geolocation)
+    {
+        navigator.geolocation.watchPosition(showPosition);
+    }
+
+    $("#sign-btn").click( function()
+    {
+        $("#login").css({"visibility": "hidden"});
+        $("#sign-up").css({"visibility": "visible"});
+    });
+
+    $("#cancel-btn").click( function()
+    {
+        $("#login").css({"visibility": "visible"});
+        $("#sign-up").css({"visibility": "hidden"});
+    });
+});
+
+
+// SHOW HIDDEN USER ISSUES
+$(document).ready(function()
+{
+    if (navigator.geolocation)
+    {
+        navigator.geolocation.watchPosition(showPosition);
+    }
+
+    $("#issue-btn").click( function()
+    {
+        $("#my-issues").css({"visibility": "hidden"});
+        $("#add-issue").css({"visibility": "visible"});
+    });
+
+    $("#my-issue-btn").click( function()
+    {
+        $("#my-issues").css({"visibility": "visible"});
+        $("#add-issue").css({"visibility": "hidden"});
+    });
+});

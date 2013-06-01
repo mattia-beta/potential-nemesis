@@ -14,23 +14,4 @@ function showPosition(position)
 }
 
 
-$(document).ready(function()
-{
-    if (navigator.geolocation)
-    {
-        navigator.geolocation.watchPosition(showPosition);
-    }
-
-    $("#sign-btn").click( function()
-    {
-        $("#login").css({"visibility": "hidden"});
-        $("#sign-up").css({"visibility": "visible"});
-    });
-
-    $("#cancel-btn").click( function()
-    {
-        $("#login").css({"visibility": "visible"});
-        $("#sign-up").css({"visibility": "hidden"});
-    });
-});
 
