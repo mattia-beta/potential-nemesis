@@ -6,6 +6,7 @@
 
                   <div class="center">
                         <div id="login">
+                          <%= image_tag('logo.png') %>
 			  <%= form_for :session, url: { controller: :sessions, action: :create } do |f| %>
 			  <%= f.text_field :email, placeholder: "email" %><br />
 			  <%= f.password_field :password, placeholder: "password"  %><br />
