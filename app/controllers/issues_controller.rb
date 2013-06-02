@@ -16,8 +16,8 @@ class IssuesController < ApplicationController
   end
 
   def update
-    if Issue.find( params[:edited][:id] ).update_attributes( :name => params[:edited][:name], :description => params[:edited][:description], :priority => params[:edited][:priority] )
-      render_js :updated
+    if Issue.find( params[:edited][:id] ).update_attributes( params[:edited] )
+      redirect_to root_url
     else
       render_error
     end
@@ -31,7 +31,6 @@ class IssuesController < ApplicationController
     end
   end
 
-
   def destroy
     @issue = current_user.issues.find( params[:issue_id] )
     if @issue.destroy
@@ -40,7 +39,6 @@ class IssuesController < ApplicationController
       render_error
     end
   end
-
 
   def fetch_nearest
     @issues = Issue.near( [ params[:latitude], params[:longitude] ] )

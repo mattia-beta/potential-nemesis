@@ -54,7 +54,9 @@
             <%= f.text_field :name, :placeholder => 'Insert a title' %>
             <%= f.select(:genre, options_for_select([['Select a type', 0], ['Earthquake', 'Earthquake'], ['Flood', 'Flood'], ['Bush Fire', 'Bush Fire'], ['Cyclone', 'Cyclone']])) %>
             <%= f.text_area :description, :size => '64x9', :placeholder => 'Insert a description' %>
-            <%= f.label :image, "Carica una foto" %>
+	    <%= f.text_field :latitude, placeholder: "latitude" %>
+	    <%= f.text_field :longitude, placeholder: "longitude" %>
+            <%= f.label :image, "Upload a Photo" %>
             <%= f.file_field :image %>
             <br><br>
             <%= f.submit "Report", :class => "btn btn-primary" %>
@@ -83,7 +85,7 @@
   </div>
 
   <div class="modal-body">
-    <%= form_for :edited, :url => { controller: :issues, :action => :update }, :remote => true do |f| %>
+    <%= form_for :edited, :url => { controller: :issues, :action => :update }, :html => { :multipart => true }, :remote => true do |f| %>
 
     <%= f.hidden_field :id %>
 
@@ -94,7 +96,9 @@
     <%= f.text_field :description %>
 
     <%= f.label :priority %>
-    <%= f.select :priority, options_for_select([[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]]) %>
+    <%= f.select :priority, options_for_select([[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]]) %><br />
+
+    <%= f.file_field :image %>
 
   </div>
   
