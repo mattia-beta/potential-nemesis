@@ -51,11 +51,21 @@
         <br/>
         <hr class="row"/>
         <%= form_for :issue, url: { controller: :issues, action: :create }, :html => { :multipart => true }, :remote => true do |f| %>
-            <%= f.text_field :name, :placeholder => 'Insert a title' %>
-            <%= f.select(:genre, options_for_select([['Select a type', 0], ['Earthquake', 'Earthquake'], ['Flood', 'Flood'], ['Bush Fire', 'Bush Fire'], ['Cyclone', 'Cyclone']])) %>
-            <%= f.text_area :description, :size => '64x9', :placeholder => 'Insert a description' %>
-            <%= f.label :image, "Carica una foto" %>
-            <%= f.file_field :image %>
+            <div class="row">
+              <%= f.text_field :name, :placeholder => 'Insert a title' %>
+            </div>
+            <div class="row">
+                <%= f.select(:genre, options_for_select([['Select a type', 0], ['Earthquake', 'Earthquake'], ['Flood', 'Flood'], ['Bush Fire', 'Bush Fire'], ['Cyclone', 'Cyclone']])) %>
+            </div>
+            <div class="row">
+                <%= f.text_area :description, :size => '64x9', :placeholder => 'Insert a description' %>
+            </div>
+            <div class="row">
+                <%= f.label :image, "Carica una foto" %>
+            </div>
+            <div class="row">
+                <%= f.file_field :image %>
+            </div>
             <br><br>
             <%= f.submit "Report", :class => "btn btn-primary" %>
         <% end %>
