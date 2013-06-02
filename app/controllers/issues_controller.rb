@@ -11,6 +11,11 @@ class IssuesController < ApplicationController
     @issues = Issue.near( [coordinates[0].latitude, coordinates[0].longitude ] ).order( :priority )
   end
 
+  def comment
+    issue = Issue.find( params[:comment][:issue_id] ).update_attributes( :comment => params[:comment][:body], :priority => 0 )
+    redirect_to action: :local
+  end
+
   def create
     if current_user.issues.new( params[:issue] ).save
        redirect_to user_path current_user
