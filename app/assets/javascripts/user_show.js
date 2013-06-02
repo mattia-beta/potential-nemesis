@@ -20,6 +20,14 @@ $(document).ready(function()
     {
         navigator.geolocation.watchPosition(showPosition);
     }
+
+    $(".edit-btn").click(function()
+    {
+        $("#edited_name").val( $(this).attr("name") );
+        $("#edited_description").val( $(this).attr("description") );
+        $("#edited_id").attr("value", $(this).attr("id"));
+        $("#myModal").modal();
+    });
 });
 
 
