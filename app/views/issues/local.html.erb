@@ -14,19 +14,20 @@
       <div class="accordion" id="accordion2">
       <% @issues.each do |i| %>
 
-        <div class="accordion-group">
-    <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= i.id %>">
-        <h3><%= i.name.capitalize %></h3>
-      </a>
+
+
+    <div class="accordion-group">
+      <div class="accordion-heading">
+
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= i.id %>">
+
+          <h3><%= i.name.capitalize %></h3>
+        </a>
     </div>
+
     <div id="collapse<%= i.id %>" class="accordion-body collapse">
       <div class="accordion-inner">
         
-          <div style="float:right">
-              <a class="edit-btn" id="<%= i.id %>" name="<%= i.name %>" description="<%= i.description %>"><i class="icon-pencil icon-2x"></i></a>
-            </div>
-
             
             <div id="desc2"><%= i.description %></div>
             <br>
@@ -52,9 +53,9 @@
             </button>
  
             <%= form_for :comment, url: {controller: :issues, action: :comment} do |f| %>
-              <%= f.text_area :body, :size => '64x9', :placeholder => 'Insert a comment' %>
-              <%= f.hidden_field :issue_id, :value => i.id %>
-              <%= f.submit "Done", :class => "btn btn-primary" %>
+              <%= f.text_area :body, :size => "60x5", :placeholder => 'Insert a comment' %>
+              <%= f.hidden_field :issue_id, :value => i.id %><br />
+              <%= f.submit "Done", :class => "btn btn-primary", :id => "issue-done" %>
             <% end %>
       </div>
     </div>
