@@ -2,6 +2,7 @@ class IssuesController < ApplicationController
 
   def index
     @issues = Issue.all
+    @users = User.all
     authorize! :index, @issues
   end
 
