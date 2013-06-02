@@ -10,7 +10,7 @@ function create_map(div_name, latitudine, longitudine)
 
     var lonLat = new OpenLayers.LonLat(longitudine, latitudine);
 
-    var zoom = 14;
+    var zoom = 17;
 
     map.setCenter(lonLat, zoom);
 
