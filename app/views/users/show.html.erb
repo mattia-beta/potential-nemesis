@@ -48,19 +48,10 @@
 
         <p class="btn btn-primary" id="my-issue-btn">My issues</p>
 
-        <br/>
-        <hr class="row"/>
+        <br/> 
+       <hr class="row"/>
         <%= form_for :issue, url: { controller: :issues, action: :create }, :html => { :multipart => true }, :remote => true do |f| %>
-<<<<<<< HEAD
-            <%= f.text_field :name, :placeholder => 'Insert a title' %>
-            <%= f.select(:genre, options_for_select([['Select a type', 0], ['Earthquake', 'Earthquake'], ['Flood', 'Flood'], ['Bush Fire', 'Bush Fire'], ['Cyclone', 'Cyclone']])) %>
-            <%= f.text_area :description, :size => '64x9', :placeholder => 'Insert a description' %>
-	    <%= f.text_field :latitude, placeholder: "latitude" %>
-	    <%= f.text_field :longitude, placeholder: "longitude" %>
-            <%= f.label :image, "Upload a Photo" %>
-            <%= f.file_field :image %>
-=======
-            <div class="row">
+        <div class="row">
               <%= f.text_field :name, :placeholder => 'Insert a title' %>
             </div>
             <div class="row">
@@ -72,13 +63,19 @@
             <div class="row">
                 <%= f.text_area :description, :size => '64x9', :placeholder => 'Insert a description' %>
             </div>
+	    <div class="row">
+	      <%= f.text_field :latitude, placeholder: "Latitude" %>
+	    </div>
+	    <div class="row">
+	      <%= f.text_field :longitude, placeholder: "Longitude" %>
+	    </div>
             <div class="row">
                 <%= f.label :image, "Carica una foto" %>
             </div>
             <div class="row">
                 <%= f.file_field :image %>
             </div>
->>>>>>> 27d302e351601eba39175419ea5faed0c0e96864
+
             <br><br>
             <%= f.submit "Report", :class => "btn btn-primary" %>
         <% end %>
