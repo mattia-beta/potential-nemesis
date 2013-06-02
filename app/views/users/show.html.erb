@@ -58,6 +58,9 @@
                 <%= f.select(:genre, options_for_select([['Select a type', 0], ['Earthquake', 'Earthquake'], ['Flood', 'Flood'], ['Bush Fire', 'Bush Fire'], ['Cyclone', 'Cyclone']])) %>
             </div>
             <div class="row">
+              <%= f.select(:priority, options_for_select([['Select priority', 0], ['Low', 0], ['Medium', 5], ['High', 10]])) %>
+            </div>
+            <div class="row">
                 <%= f.text_area :description, :size => '64x9', :placeholder => 'Insert a description' %>
             </div>
             <div class="row">
