@@ -12,7 +12,7 @@
 
 class User < ActiveRecord::Base
 
-  attr_accessible :email, :name, :password, :role
+  attr_accessible :email, :name, :password, :role, :zone
 
   # before create generate a cookie token
   before_save :create_token
@@ -25,7 +25,8 @@ class User < ActiveRecord::Base
   validates :email, :presence => true
   validates :name, :presence => true, :format => {:with => CHARS_AND_NUMS}
   validates_presence_of :password, :on => :create
-
+  validates_presence_of :zone
+  
   private
 
   def create_token
