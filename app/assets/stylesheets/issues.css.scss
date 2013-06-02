@@ -7,10 +7,22 @@
   width: 29%;
   position: absolute;
   visibility: visible;
+  margin-left: 30px;
+
+  #desc
+  {
+    padding-left: 15px ;
+    font-weight: bold;
+  }
+
+  #desc2
+  {
+    padding: 5px ;
+  }
 
   hr
   {
-    margin: 0px 0px 15px 0px;
+    margin: 15px 0px 15px 0px;
   }
 
   .issue
@@ -24,10 +36,17 @@
 
     #issue_priority
     {
+      width: 15%;
+
       .update
       {
         margin: 0px 0px 10px 20px;
       }
+    }
+
+    form
+    {
+      margin: 0 0 15px;
     }
   }
 
@@ -39,11 +58,11 @@
     }
 
     position: fixed;
-    margin-top: 50px;
-    width: 100%;
+    width: 70%;
     height: 110%;
     margin-top: -40px;
     padding: 0px;
     top: 0;
+    left: 30%;
   }
 }
