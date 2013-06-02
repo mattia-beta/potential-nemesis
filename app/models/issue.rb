@@ -20,6 +20,8 @@ class Issue < ActiveRecord::Base
 
   attr_accessible :description, :genre, :image, :address, :latitude, :longitude, :name, :priority, :comment, :done
 
+  before_create { |issue| issue.done = false }
+
   geocoded_by :address, :latitude => :latitude, :longitude => :longitude
   after_validation :geocode
 

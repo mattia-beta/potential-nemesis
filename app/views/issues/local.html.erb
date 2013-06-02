@@ -7,7 +7,7 @@
   <div class="row">
     <div class="span4">
 
-      <h1>All open issues</h1>
+      <h1>Nearest issues</h1>
 
       <hr class="row">
 
@@ -15,20 +15,20 @@
       <% @issues.each do |i| %>
 
 
+        
 
     <div class="accordion-group">
       <div class="accordion-heading">
-
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= i.id %>">
-
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= i.id %>">
           <h3><%= i.name.capitalize %></h3>
         </a>
     </div>
 
+
     <div id="collapse<%= i.id %>" class="accordion-body collapse">
       <div class="accordion-inner">
         
-            
+          
             <div id="desc2"><%= i.description %></div>
             <br>
 
@@ -37,16 +37,7 @@
             <p>Submitter: <%= i.user.name.capitalize %></p>
             <p>Genre: <%= i.genre %></p>
 
-<!--
-            <%= form_for :issue, url: {controller: :issues, action: :update}, :remote => true do |f| %>
-                <%= f.label "Update priority:" %>
-                <%= f.hidden_field :issue_id, :value => i.id %>
-                <%= f.select :priority, options_for_select([[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]]) %>
-                <%= f.submit :update, :class => "btn btn-mini btn-primary update" %>  
-            <% end %>
-            -->
-
-            <button class="btn btn-info btn-mini" latitude="<%= i.latitude %>" longitude="<%= i.longitude %>">
+            <button class="btn btn-info btn-mini show-on-map" latitude="<%= i.latitude %>" longitude="<%= i.longitude %>">
               <i class="icon-search icon-white"></i>
               &nbsp;
               Show on Map
