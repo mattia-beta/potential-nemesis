@@ -48,6 +48,8 @@
             <%= f.text_field :name, :placeholder => 'Insert a title' %>
             <%= f.select(:genre, options_for_select([['Select a type', 0], ['Earthquake', 'Earthquake'], ['Flood', 'Flood'], ['Bush Fire', 'Bush Fire'], ['Cyclone', 'Cyclone']])) %>
             <%= f.text_area :description, :size => '64x9', :placeholder => 'Insert a description' %>
+            <%= f.label :image, "Carica una foto" %>
+            <%= f.file_field :image %>
             <br><br>
             <%= f.submit "Report", :class => "btn btn-primary" %>
         <% end %>
