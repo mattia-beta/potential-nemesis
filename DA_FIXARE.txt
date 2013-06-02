@@ -1,0 +1,2 @@
+- nella user#show togliere sottolineatura sull'hover del cestino e sulla matita text-decoration:none
+- mettere uno spazio fra cestino e matita
