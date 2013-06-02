@@ -70,14 +70,14 @@ function handleMapClick(e)
 {
     if(click_enabled)
     {
-        OSMLonLat = map.getLonLatFromViewPortPx(e.xy);
+        OSMLonLat = map. getLonLatFromPixel(e.xy);
         OSMLonLat.transform( map.projection, map.displayProjection);
 
         Lo = OSMLonLat.lon
         La = OSMLonLat.lat
 
-        //$("#lat").val(La);
-        //$("#long").val(Lo);
+        $("#issue_latitude").val(Lo);
+        $("#issue_longitude").val(Lo);
 
         console.log("Lat: " + La);
         console.log("Lon: " + Lo);
