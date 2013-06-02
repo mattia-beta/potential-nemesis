@@ -1,25 +1,24 @@
 class IssuesController < ApplicationController
 
+
+#  load_and_authorize_resource
   def index
     @issues = Issue.all
-    @users = User.all
-#    authorize! :index, @issues
   end
 
   def local
     coordinates = Geocoder.search( current_user.zone )
-    @issues = Issue.near( [coordinates[0].latitude, coordinates[0].longitude ] ).where( :done => false ).order( :priority )
- #   authorize! :local, @issues
+    @issues = Issue.near( [coordinates[0].latitude, coordinates[0].longitude ] ).order( :priority )
   end
 
   def comment
-    issue = Issue.find( params[:comment][:issue_id] ).update_attributes( :comment => params[:comment][:body], :priority => 0 , :done => true)
+    issue = Issue.find( params[:comment][:issue_id] ).update_attributes( :comment => params[:comment][:body], :priority => 0 )
     redirect_to action: :local
   end
 
   def create
     if current_user.issues.new( params[:issue] ).save
-       redirect_to controller: :users, action: :show
+       redirect_to user_path current_user
     else
       render_error
     end

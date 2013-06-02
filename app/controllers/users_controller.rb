@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  #load_and_authorize_resource
     def new
         @user = User.new
     end
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
         @user = User.create(params[:user])
         if @user.save
           session[:user_id] = @user.id
-          redirect_to action: :show
+          redirect_to @user
         else
            render 'new'
         end
@@ -16,13 +16,13 @@ class UsersController < ApplicationController
 
 
     def edit
-      current_user
+        @user = User.find(params[:id])
     end
 
 
     def update
         if @user.update_attributes(params[:user])
-            redirect_to action: :show, :notice =>  "Profilo aggiornato!"
+            redirect_to @user, :notice =>  "Profilo aggiornato!"
         else
             flash[:notice] = "Non aggiornato.."
             render 'edit'
@@ -36,8 +36,6 @@ class UsersController < ApplicationController
 
 
     def show
-      @user = current_user
-#      authorize! :show, @user
     end
 
 end

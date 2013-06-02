@@ -59,4 +59,3 @@ $(document).ready(function()
         $("#add-issue").css({"visibility": "hidden"});
     });
 });
-
