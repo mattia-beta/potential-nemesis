@@ -9,6 +9,7 @@ function showPosition(position)
 
         loaded = true;
 
+        click_enabled = false;
         create_map("home-maps", latitudine, longitudine);
     }
 }

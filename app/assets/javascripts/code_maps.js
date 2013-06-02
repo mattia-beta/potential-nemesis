@@ -68,6 +68,8 @@ function create_map(div_name, latitudine, longitudine)
 
 function handleMapClick(e)
 {
+    if(click_enabled)
+    {
         OSMLonLat = map.getLonLatFromViewPortPx(e.xy);
         OSMLonLat.transform( map.projection, map.displayProjection);
 
@@ -79,6 +81,7 @@ function handleMapClick(e)
 
         console.log("Lat: " + La);
         console.log("Lon: " + Lo);
+    }
 }
 
 

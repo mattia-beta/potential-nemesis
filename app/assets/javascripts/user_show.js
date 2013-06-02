@@ -8,7 +8,7 @@ function showPosition(position)
         longitudine = position.coords.longitude;
 
         loaded = true;
-
+        click_enabled = true;
         create_map("user-map", latitudine, longitudine);
     }
 }
