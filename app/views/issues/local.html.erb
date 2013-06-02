@@ -1,0 +1,99 @@
+<%= javascript_include_tag "global_show" %>
+<%= render :partial => "layouts/menu" %>
+
+<div id="issues-index" class="container">
+  <div class="row blocco"></div>
+
+  <div class="row">
+    <div class="span4">
+
+      <h1>All open issues</h1>
+
+      <hr class="row">
+
+
+      <% @issues.each do |i| %>
+
+          <div class="span4 issue">
+
+            <div style="float:right">
+
+              <%= link_to '<i class="icon-trash icon-2x"></i>'.html_safe, controller: :issues, action: :destroy, :issue_id => i.id, :remote => true %>
+              &nbsp;
+              <a class="edit-btn" id="<%= i.id %>" name="<%= i.name %>" description="<%= i.description %>"><i class="icon-pencil icon-2x"></i></a>
+            </div>
+
+            <h3><%= i.name.capitalize %></h3>
+
+            <div id="desc2"><%= i.description %></div>
+            <br>
+
+            <%= image_tag i.image_url.to_s, :size => "150x50", :style => "float:left; padding-right: 15px;padding-bottom: 15px;" %>
+
+            <p>Address: <%= i.address %></p>
+            <p>Submitter: <%= i.user.name.capitalize %></p>
+            <p>Genre: <%= i.genre %></p>
+
+            <%= form_for :issue, url: {controller: :issues, action: :update}, :remote => true do |f| %>
+                <%= f.label "Update priority:" %>
+                <%= f.hidden_field :issue_id, :value => i.id %>
+                <%= f.select :priority, options_for_select([[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]]) %>
+                <%= f.submit :update, :class => "btn btn-mini btn-primary update" %>
+            <% end %>
+
+            <button class="btn btn-info btn-mini" latitude="<%= i.latitude %>" longitude="<%= i.longitude %>">
+              <i class="icon-search icon-white"></i>
+              &nbsp;
+              Show on Map
+            </button>
+
+            <hr class="row">
+
+          </div>
+
+      <% end %>
+
+<!--
+      <div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        Collapsible Group Item #1
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        Anim pariatur cliche...Anim pariatur cliche...Anim pariatur cliche...Anim pariatur cliche...
+        Anim pariatur cliche...
+        Anim pariatur cliche...Anim pariatur cliche...Anim pariatur cliche...Anim pariatur cliche...
+        Anim pariatur cliche...Anim pariatur cliche...
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+        Collapsible Group Item #2
+      </a>
+    </div>
+    <div id="collapseTwo" class="accordion-body collapse">
+      <div class="accordion-inner">
+        Anim pariatur cliche...Anim pariatur cliche...Anim pariatur cliche...Anim pariatur cliche...Anim pariatur cliche...Anim pariatur cliche...Anim pariatur cliche...Anim pariatur cliche...Anim pariatur cliche...Anim pariatur cliche...
+      </div>
+    </div>
+  </div>
+</div>
+-->
+
+    </div>
+
+
+    <div class="span8">
+      <div id="global-map">
+        &nbsp;
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
