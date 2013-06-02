@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'cancan'
 gem 'annotate'
 gem 'geocoder'
+gem 'font-awesome-sass-rails'
 
 #bootstrap
 gem "therubyracer"
