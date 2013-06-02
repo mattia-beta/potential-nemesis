@@ -3,13 +3,13 @@ class IssuesController < ApplicationController
   def index
     @issues = Issue.all
     @users = User.all
-    authorize! :index, @issues
+#    authorize! :index, @issues
   end
 
   def local
     coordinates = Geocoder.search( current_user.zone )
     @issues = Issue.near( [coordinates[0].latitude, coordinates[0].longitude ] ).where( :done => false ).order( :priority )
-    authorize! :local, @issues
+ #   authorize! :local, @issues
   end
 
   def comment

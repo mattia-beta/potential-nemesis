@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
     def show
       @user = current_user
-      authorize! :show, @user
+#      authorize! :show, @user
     end
 
 end
