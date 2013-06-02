@@ -18,20 +18,24 @@
 
             <div id="box-<%= i.id %>" class="issue">
               <div style="float:right">
-                <%= link_to 'destroy', controller: :issues, action: :destroy, :issue_id => i.id, :remote => true %>
-                <a class="edit-btn" id="<%= i.id %>" name="<%= i.name %>" description="<%= i.description %>">Edit</a>
+                <%= link_to '<i class="icon-trash icon-2x"></i>'.html_safe, controller: :issues, action: :destroy, :issue_id => i.id, :remote => true %>
+                <a class="edit-btn" id="<%= i.id %>" name="<%= i.name %>" description="<%= i.description %>"><i class="icon-pencil icon-2x"></i></a>
               </div>
 
+
+
               <h3><%= i.name.capitalize %></h3><br/>
-              <div id="desc">Description:</div><%= i.description %>
+              <%= image_tag i.image_url.to_s, :size => "150x50", :style => "float:left; padding-right: 5px;" %>
+
+              <div id="desc">Description:</div><div id="desc2"><%= i.description %></div>
               <br/>
               Address: <%= i.address %>
               <br/>
               Genre: <%= i.genre %><br />
 	      Priority : <%= i.priority %>
 
-	      <%= image_tag i.image_url.to_s, :size => "150x50" %>
-              <br/>
+
+
               <br/>
               <hr/>
             </div>
