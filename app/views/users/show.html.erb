@@ -25,12 +25,13 @@
 
 
               <h3><%= i.name.capitalize %></h3><br/>
-              <%= image_tag i.image_url.to_s, :size => "150x50", :style => "float:left; padding-right: 5px;" %>
+              <%= image_tag i.image_url.to_s, :size => "150x50", :style => "float:left; padding-right: 15px;padding-bottom: 15px;" %>
 
               <div id="desc">Description:</div><div id="desc2"><%= i.description %></div>
               <br/>
               Address: <%= i.address %>
               <br/>
+
               Genre: <%= i.genre %><br />
 	      Priority : <%= i.priority %>
 
