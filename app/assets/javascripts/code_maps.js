@@ -8,7 +8,7 @@ function create_map(div_name, latitudine, longitudine)
     epsg4326 = new OpenLayers.Projection("EPSG:4326"); //WGS 1984 projection
     projectTo = map.getProjectionObject(); //The map projection (Spherical Mercator)
 
-    var lonLat = new OpenLayers.LonLat(longitudine, latitudine);
+    var lonLat = new OpenLayers.LonLat(longitudine, latitudine).transform(epsg4326, projectTo);
 
     var zoom = 17;
 
