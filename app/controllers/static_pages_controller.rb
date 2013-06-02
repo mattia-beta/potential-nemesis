@@ -6,6 +6,8 @@ class StaticPagesController < ApplicationController
         redirect_to user_path( current_user )
       elsif current_user and current_user.role.include? "global"
         redirect_to controller: :issues, action: :index
+      elsif current_user and current_user.role.include? "local"
+        redirect_to controller: :issues, action: :local
       end
     end
   end
