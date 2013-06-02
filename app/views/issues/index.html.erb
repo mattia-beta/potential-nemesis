@@ -11,45 +11,59 @@
 
       <hr class="row">
 
+
+
+        <div class="accordion" id="accordion2">
       <% @issues.each do |i| %>
+    <div class="accordion-group">
+      <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= i.id %>">
+          <h3>
+            <% if i.done %>
+              <i class="icon-circle"></i>
+            <% else %>
+              <i class="icon-circle-blank"></i>
+            <% end %>
+            <%= i.name.capitalize %>
+          </h3>
+        </a>
+    </div>
 
-          <div class="span4 issue">
 
-            <div style="float:right">
-              <%= link_to '<i class="icon-trash icon-2x"></i>'.html_safe, controller: :issues, action: :destroy, :issue_id => i.id, :remote => true %>
-              &nbsp;
-              <a class="edit-btn" id="<%= i.id %>" name="<%= i.name %>" description="<%= i.description %>"><i class="icon-pencil icon-2x"></i></a>
-            </div>
-
-            <h3><%= i.name.capitalize %></h3>
+    <div id="collapse<%= i.id %>" class="accordion-body collapse">
+      <div class="accordion-inner">
 
             <div id="desc2"><%= i.description %></div>
             <br>
 
             <%= image_tag i.image_url.to_s, :size => "150x50", :style => "float:left; padding-right: 15px;padding-bottom: 15px;" %>
 
-            <p>Address: <%= i.address %></p>
-            <p>Submitter: <%= i.user.name.capitalize %></p>
-            <p>Genre: <%= i.genre %></p>
+            <p><strong>Submitter:</strong> <%= i.user.name.capitalize %></p>
+            <p><strong>Genre:</strong> <%= i.genre %></p>
+            <p><strong>Local comment:</strong> <%= i.comment %></p>
+            <strong>Upadate priority:</strong>
+
 
             <%= form_for :issue, url: {controller: :issues, action: :update_priority}, :remote => true do |f| %>
-                <%= f.label "Update priority:" %>
                 <%= f.hidden_field :issue_id, :value => i.id %>
                 <%= f.select :priority, options_for_select([[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]]) %>
                 <%= f.submit :update, :class => "btn btn-mini btn-primary update" %>
             <% end %>
 
-            <button class="show-on-map btn btn-info btn-mini" latitude="<%= i.latitude %>" longitude="<%= i.longitude %>">
+            <button class="btn btn-info btn-mini show-on-map" latitude="<%= i.latitude %>" longitude="<%= i.longitude %>">
               <i class="icon-search icon-white"></i>
               &nbsp;
               Show on Map
             </button>
+ 
+      </div>
+    </div>
+  </div>
 
-            <hr class="row">
-
-          </div>
+            
 
       <% end %>
+    </div>
     </div>
 
 
@@ -62,3 +76,10 @@
   </div>
 </div>
 </div>
+
+<script>
+$(document).ready(function()
+{
+$('#normal-toggle-button').toggleButtons();
+});
+</script>
