@@ -16,16 +16,7 @@ ActiveRecord::Schema.define(:version => 20130602085346) do
 # Could not dump table "issues" because of following StandardError
 #   Unknown type 'bool' for column 'done'
 
-  create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "password"
-    t.string   "email"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
-    t.string   "token"
-    t.string   "password_digest"
-    t.string   "role",            :default => "user"
-    t.string   "zone"
-  end
+# Could not dump table "users" because of following StandardError
+#   Unknown type 'bool' for column 'done'
 
 end
