@@ -7,7 +7,7 @@ class IssuesController < ApplicationController
   end
 
   def local
-    <
+    @issues = Issue.near( [ params[:latitude], params[:longitude] ] )
   end
 
   def create

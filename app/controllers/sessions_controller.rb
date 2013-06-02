@@ -12,6 +12,8 @@ class SessionsController < ApplicationController
                 redirect_to user_path(@user)
             elsif current_user.role.include? "global"
                 redirect_to controller: :issues, action: :index
+            elsif current_user.role.include? "local"
+              redirect_to controller: :issues, action: :local
             end
         else
             redirect_to root_url
