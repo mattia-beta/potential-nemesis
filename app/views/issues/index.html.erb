@@ -1,3 +1,4 @@
+<%= javascript_include_tag "global_show" %>
 <%= render :partial => "layouts/menu" %>
 
 <div class="container" id="issues-index">
@@ -12,16 +13,18 @@
           <% @issues.each do |i| %>
 
               <div class="span4 issue">
-                <p>Name: <%= i.name %></p>
-                <p>Description : <%= i.description %></p>
+                <p class="bold">Name: <%= i.name %></p>
+                <p class="bold">Description : <%= i.description %></p>
                 <p>Submitter: <%= i.user.name.capitalize %></p>
                 <p>Address: <%= i.address %></p>
                 <p>Update priority:</p>
                 <%= form_for :issue, url: { controller: :issues, action: :update }, :remote => true do |f| %>
                     <%= f.hidden_field :issue_id, :value => i.id %>
                     <%= f.select :priority, options_for_select([[1,1],[2,2],[3,3],[4,4],[5,5]]) %>
+                    <%= f.submit :update, :class => "btn btn-mini btn-primary update" %>
                     <br>
-                    <%= f.submit :update, :class => "btn btn-mini btn-primary" %>
+                    <%= image_tag i.image_url.to_s %>
+                    <br>
                     <button class="btn btn-info btn-mini" latitude="<%= i.latitude %>" longitude="<%= i.longitude %>">
                       <i class="icon-search icon-white"></i>
                       &nbsp;
@@ -35,7 +38,7 @@
         </div>
 
         <div class="span8">
-            <div id="user-map">
+            <div id="global-map">
               &nbsp;
             </div>
         </div>
