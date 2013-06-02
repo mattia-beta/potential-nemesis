@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  #load_and_authorize_resource
+
     def new
         @user = User.new
     end
@@ -36,6 +36,8 @@ class UsersController < ApplicationController
 
 
     def show
+      @user = current_user
+      authorize! :show, @user
     end
 
 end

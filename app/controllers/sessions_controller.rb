@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id
             cookies.permanent[:token] = @user.token
             if current_user and current_user.role.include? "user"
-                redirect_to user_path(@user)
+                redirect_to controller: :users, :action => :show
             elsif current_user and current_user.role.include? "global"
                 redirect_to controller: :issues, action: :index
             elsif current_user and current_user.role.include? "local"

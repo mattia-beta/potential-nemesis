@@ -1,14 +1,14 @@
 class IssuesController < ApplicationController
 
-
-#  load_and_authorize_resource
   def index
     @issues = Issue.all
+    authorize! :index, @issues
   end
 
   def local
     coordinates = Geocoder.search( current_user.zone )
     @issues = Issue.near( [coordinates[0].latitude, coordinates[0].longitude ] ).where( :done => false ).order( :priority )
+    authorize! :local, @issues
   end
 
   def comment

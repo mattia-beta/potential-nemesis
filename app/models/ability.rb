@@ -8,13 +8,17 @@ class Ability
       can :manage, Issue
       can :manage, User
       cannot :index, Issue
-      cannot :local, :index
+      cannot :local, Issue
       when "local"
       can :manage, Issue
       can :manage, User
       cannot :show, User
+      cannot :index, Issue
       when "global"
-      can :manage, :all
+      can :manage, Issue
+      can :manage, User
+      cannot :show, User
+      cannot :local, Issue
     end
   end
 end
