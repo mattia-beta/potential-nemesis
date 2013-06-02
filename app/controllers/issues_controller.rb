@@ -9,7 +9,7 @@ class IssuesController < ApplicationController
 
   def create
     if current_user.issues.new( params[:issue] ).save
-      render_js :created
+       redirect_to user_path current_user
     else
       render_error
     end
