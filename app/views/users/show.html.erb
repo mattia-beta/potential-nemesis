@@ -2,58 +2,99 @@
 <%= render 'layouts/menu' %>
 
 <div id="profile" class="container">
-<div class="row blocco"></div>
+  <div class="row blocco"></div>
 
 
-<div class="row-fluid">
-  <div class="span4">
+  <div class="row-fluid">
+    <div class="span4">
 
-    <div id="my-issues">
-    <h1>My issues</h1>
-    <p class="btn btn-primary" id="issue-btn">Add issue!</p>
-      <br />
-      <hr class="row" />
-    <% current_user.issues.all.each do |i| %>
-        <div id="<%= i.id %>">
-          <div style="float:right">
-            <%= link_to 'destroy', issue_path( i.id ) , :method => :delete, :remote => true %>
-          </div>
+      <div id="my-issues">
+        <h1>My issues</h1>
 
-        <h2><%= i.name.capitalize %></h2><br />
-        Description: <%= i.description %><br />
-        Address: <%= i.address %><br />
-        Genre: <%= i.genre %><br />
-        <br />
-        <hr />
-        </div>
-    <% end %>
-     </div>
+        <p class="btn btn-primary" id="issue-btn">Add issue!</p>
+        <br/>
+        <hr class="row"/>
+        <% current_user.issues.all.each do |i| %>
 
-    <div id="add-issue">
-          <h3>Report an issue</h3>
-      <p class="btn btn-primary" id="my-issue-btn">My issues</p>
+            <div id="box-<%= i.id %>" class="issue">
+              <div style="float:right">
+                <%= link_to 'destroy', controller: :issues, action: :destroy, :issue_id => i.id, :remote => true %>
+                <a class="edit-btn" id="<%= i.id %>" name="<%= i.name %>" description="<%= i.description %>">Edit</a>
+              </div>
 
-      <br />
-      <hr class="row" />
-          <%= form_for :issue, url: { controller: :issues, action: :create }, :html => { :multipart => true }, :remote => true do |f| %>
-              <%= f.text_field :name, :placeholder => 'Insert a title' %>
-              <%= f.select(:genre, options_for_select([['Select a type',0],['Earthquake','Earthquake' ],['Flood', 'Flood'],['Bush Fire', 'Bush Fire'],['Cyclone', 'Cyclone']])) %>
-              <%= f.text_area :description, :size => '64x9', :placeholder => 'Insert a description' %>
-              <br><br>
-              <%= f.submit "Report", :class => "btn btn-primary" %>
-          <% end %>
+              <h2><%= i.name.capitalize %></h2><br/>
+              Description: <%= i.description %>
+              <br/>
+              Address: <%= i.address %>
+              <br/>
+              Genre: <%= i.genre %><br />
+	      Priority : <%= i.priority %>
+              <br/>
+              <br/>
+              <hr/>
+            </div>
 
+        <% end %>
+      </div>
+
+      <div id="add-issue">
+        <h3>Report an issue</h3>
+
+        <p class="btn btn-primary" id="my-issue-btn">My issues</p>
+
+        <br/>
+        <hr class="row"/>
+        <%= form_for :issue, url: { controller: :issues, action: :create }, :html => { :multipart => true }, :remote => true do |f| %>
+            <%= f.text_field :name, :placeholder => 'Insert a title' %>
+            <%= f.select(:genre, options_for_select([['Select a type', 0], ['Earthquake', 'Earthquake'], ['Flood', 'Flood'], ['Bush Fire', 'Bush Fire'], ['Cyclone', 'Cyclone']])) %>
+            <%= f.text_area :description, :size => '64x9', :placeholder => 'Insert a description' %>
+            <br><br>
+            <%= f.submit "Report", :class => "btn btn-primary" %>
+        <% end %>
+
+      </div>
     </div>
-  </div>
 
-  <div class="span8">
+    <div class="span8">
       <div id="user-map">
         &nbsp;
+      </div>
     </div>
-</div>
+
+  </div>
 
 </div>
 
+
+
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Edit issue</h3>
+  </div>
+
+  <div class="modal-body">
+    <%= form_for :edited, :url => { controller: :issues, :action => :update }, :remote => true do |f| %>
+
+    <%= f.hidden_field :id %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+
+    <%= f.label :priority %>
+    <%= f.select :priority, options_for_select([[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]]) %>
+
+  </div>
+  
+  <div class="modal-footer">
+    <a class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+    <%= f.submit :Save, :class => "btn btn-primary" %>
+  </div>
+
+  <% end %>
+
 </div>
-
-

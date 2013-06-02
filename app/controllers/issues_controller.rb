@@ -16,7 +16,7 @@ class IssuesController < ApplicationController
   end
 
   def update
-    if Issue.find( params[:issue][:issue_id] ).update_attributes( params[:issues] )
+    if Issue.find( params[:edited][:id] ).update_attributes( :name => params[:edited][:name], :description => params[:edited][:description], :priority => params[:edited][:priority] )
       render_js :updated
     else
       render_error
@@ -33,7 +33,7 @@ class IssuesController < ApplicationController
 
 
   def destroy
-    @issue = current_user.issues.find( params[:id] )
+    @issue = current_user.issues.find( params[:issue_id] )
     if @issue.destroy
       render_js :destroyed
     else

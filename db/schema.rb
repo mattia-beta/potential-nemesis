@@ -16,15 +16,15 @@ ActiveRecord::Schema.define(:version => 20130601171220) do
   create_table "issues", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "priority"
+    t.integer  "priority",    :default => 0
     t.string   "image"
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "genre"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   add_index "issues", ["user_id"], :name => "index_issues_on_user_id"

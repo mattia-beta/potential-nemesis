@@ -3,7 +3,7 @@ class CreateIssues < ActiveRecord::Migration
     create_table :issues do |t|
       t.string :name
       t.text :description
-      t.integer :priority
+      t.integer :priority, :default => 0
       t.string :image
       t.string :address
       t.float :latitude
