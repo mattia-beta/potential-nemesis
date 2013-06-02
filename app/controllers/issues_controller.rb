@@ -6,6 +6,9 @@ class IssuesController < ApplicationController
     @issues = Issue.all
   end
 
+  def local
+    <
+  end
 
   def create
     if current_user.issues.new( params[:issue] ).save

@@ -7,6 +7,10 @@ PotentialNemesis::Application.routes.draw do
   post "issues/create" => "issues#create"
   get "issues/destroy" => "issues#destroy"
   get "issues/index" => "issues#index"
+
+  # local routes
+  get "issues/local" => "issues#local"
+
   resources :users
   # sessions routes
   get "sessions/new" => "sessions#new"

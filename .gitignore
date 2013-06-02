@@ -2,7 +2,7 @@
 bin/
 bin-debug/
 bin-release/
-db/*.sqlite3
+*.sqlite3
 
 # Other files and folders
 .settings/
