@@ -8,7 +8,7 @@ class IssuesController < ApplicationController
 
   def local
     coordinates = Geocoder.search( current_user.zone )
-    @issues = Issue.near( [coordinates[0].latitude, coordinates[0].longitude ] )
+    @issues = Issue.near( [coordinates[0].latitude, coordinates[0].longitude ] ).order( :priority )
   end
 
   def create
