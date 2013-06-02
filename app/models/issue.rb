@@ -18,7 +18,7 @@ class Issue < ActiveRecord::Base
 
   belongs_to :user
 
-  attr_accessible :description, :genre, :image, :address, :latitude, :longitude, :name, :priority
+  attr_accessible :description, :genre, :image, :address, :latitude, :longitude, :name, :priority, :comment, :done
 
   geocoded_by :address, :latitude => :latitude, :longitude => :longitude
   after_validation :geocode

@@ -12,7 +12,7 @@ class IssuesController < ApplicationController
   end
 
   def comment
-    issue = Issue.find( params[:comment][:issue_id] ).update_attributes( :comment => params[:comment][:body], :priority => 0 )
+    issue = Issue.find( params[:comment][:issue_id] ).update_attributes( :comment => params[:comment][:body], :priority => 0 , :done => true)
     redirect_to action: :local
   end
 
