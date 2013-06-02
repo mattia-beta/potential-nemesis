@@ -15,6 +15,13 @@ class IssuesController < ApplicationController
     end
   end
 
+  def update
+    if Issue.find( params[:issue][:issue_id] ).update_attributes( params[:issues] )
+      render_js :updated
+    else
+      render_error
+    end
+  end
 
   def update_priority
     if Issue.find( params[:issue][:issue_id] ).update_attributes( :priority => params[:issue][:priority] )
