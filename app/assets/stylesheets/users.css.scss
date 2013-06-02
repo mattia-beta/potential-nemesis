@@ -23,21 +23,20 @@
 
   #add-issue
   {
+    width: 100%;
     visibility: hidden;
-
-    h3
-    {
-      color: red;
-    }
-
   }
 
   #my-issues
   {
+    width: 29%;
     position: absolute;
     visibility: visible;
 
   }
 
+  #desc{
+    font-weight: bold;
+  }
 }
 

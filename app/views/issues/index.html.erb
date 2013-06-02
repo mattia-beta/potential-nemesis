@@ -1,22 +1,45 @@
 <%= render :partial => "layouts/menu" %>
-<div class="blocco bar">
-  <h2>All open issues</h2>
-  <% @issues.each do |i| %>
-  <div class="well span3">
-    <b>Submitter : <%= i.user.name.capitalize %><br />
-      Name : <%= i.name %></b><br />
-    Description : <%= i.description %><br />
-    Address : <%= i.address %><br />
-    <button class="btn btn-info btn-mini" latitude="<%= i.latitude %>" longitude="<%= i.longitude %>">
-      <i class="icon-search icon-white"></i>
-	&nbsp;Show on Map
-    </button><br />
-    Update priority : <br />
-    <%= form_for :issue, url: { controller: :issues, action: :update_priority }, :remote => true do |f| %>
-    <%= f.hidden_field :issue_id, :value => i.id %>
-    <%= f.select :priority, options_for_select([[1,1],[2,2],[3,3],[4,4],[5,5]]) %>
-    <%= f.submit :update, :class => "btn btn-mini btn-primary" %>
-    <% end %>
-  </div>
-  <% end %>
+
+<div class="container" id="issues-index">
+    <div class="blocco bar">
+      <div class="row span12">
+
+        <div class="span4">
+          <h3>All open issues</h3>
+
+          <hr>
+
+          <% @issues.each do |i| %>
+
+              <div class="span4 issue">
+                <p>Name: <%= i.name %></p>
+                <p>Description : <%= i.description %></p>
+                <p>Submitter: <%= i.user.name.capitalize %></p>
+                <p>Address: <%= i.address %></p>
+                <p>Update priority:</p>
+                <%= form_for :issue, url: { controller: :issues, action: :update }, :remote => true do |f| %>
+                    <%= f.hidden_field :issue_id, :value => i.id %>
+                    <%= f.select :priority, options_for_select([[1,1],[2,2],[3,3],[4,4],[5,5]]) %>
+                    <br>
+                    <%= f.submit :update, :class => "btn btn-mini btn-primary" %>
+                    <button class="btn btn-info btn-mini" latitude="<%= i.latitude %>" longitude="<%= i.longitude %>">
+                      <i class="icon-search icon-white"></i>
+                      &nbsp;
+                      Show on Map
+                    </button>
+                <% end %>
+                <hr class="row">
+              </div>
+
+          <% end %>
+        </div>
+
+        <div class="span8">
+            <div id="user-map">
+              &nbsp;
+            </div>
+        </div>
+
+      </div>
+    </div>
 </div>

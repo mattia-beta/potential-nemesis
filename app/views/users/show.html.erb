@@ -22,8 +22,8 @@
                 <a class="edit-btn" id="<%= i.id %>" name="<%= i.name %>" description="<%= i.description %>">Edit</a>
               </div>
 
-              <h2><%= i.name.capitalize %></h2><br/>
-              Description: <%= i.description %>
+              <h3><%= i.name.capitalize %></h3><br/>
+              <div id="desc">Description:</div><%= i.description %>
               <br/>
               Address: <%= i.address %>
               <br/>
@@ -38,7 +38,7 @@
       </div>
 
       <div id="add-issue">
-        <h3>Report an issue</h3>
+        <h1>Report an issue</h1>
 
         <p class="btn btn-primary" id="my-issue-btn">My issues</p>
 
