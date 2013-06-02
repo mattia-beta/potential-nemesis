@@ -8,7 +8,7 @@ class IssuesController < ApplicationController
 
   def local
     coordinates = Geocoder.search( current_user.zone )
-    @issues = Issue.near( [coordinates[0].latitude, coordinates[0].longitude ] ).order( :priority )
+    @issues = Issue.near( [coordinates[0].latitude, coordinates[0].longitude ] ).where( :done => false ).order( :priority )
   end
 
   def comment
@@ -18,7 +18,7 @@ class IssuesController < ApplicationController
 
   def create
     if current_user.issues.new( params[:issue] ).save
-       redirect_to user_path current_user
+       redirect_to controller: :users, action: :show
     else
       render_error
     end
