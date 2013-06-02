@@ -18,7 +18,7 @@ class IssuesController < ApplicationController
 
   def create
     if current_user.issues.new( params[:issue] ).save
-       redirect_to user_path current_user
+       redirect_to controller: :users, action: :show
     else
       render_error
     end

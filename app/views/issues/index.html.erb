@@ -32,7 +32,7 @@
             <p>Submitter: <%= i.user.name.capitalize %></p>
             <p>Genre: <%= i.genre %></p>
 
-            <%= form_for :issue, url: {controller: :issues, action: :update}, :remote => true do |f| %>
+            <%= form_for :issue, url: {controller: :issues, action: :update_priority}, :remote => true do |f| %>
                 <%= f.label "Update priority:" %>
                 <%= f.hidden_field :issue_id, :value => i.id %>
                 <%= f.select :priority, options_for_select([[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]]) %>
