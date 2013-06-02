@@ -25,6 +25,26 @@
   {
     width: 100%;
     visibility: hidden;
+
+    #issue_name
+    {
+      width: 97%;
+    }
+
+    #issue_genre
+    {
+      width: 100%;
+    }
+
+    #issue_description
+    {
+      width: 97%;
+    }
+
+    form
+    {
+      margin: 0 0 0 30px;
+    }
   }
 
   #my-issues
@@ -32,8 +52,6 @@
     width: 29%;
     position: absolute;
     visibility: visible;
-    margin-left: 30px;
-
   }
 
   #desc{
