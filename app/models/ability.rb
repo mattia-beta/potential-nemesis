@@ -7,6 +7,7 @@ class Ability
       when "user"
       can :manage, Issue
       can :manage, User
+      cannot :index, Issue
       when "local"
       can :manage, Issue
       can :manage, User
