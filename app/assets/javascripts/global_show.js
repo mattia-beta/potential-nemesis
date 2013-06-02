@@ -20,6 +20,15 @@ $(document).ready(function()
     {
         navigator.geolocation.watchPosition(showPosition);
     }
+
+    $(".show-on-map").click(function()
+    {
+        var lat = $(this).attr("latitude");
+        var lon = $(this).attr("longitude");
+
+        $("#global-map").html(" ");
+        create_map("global-map", lat, lon);
+    });
 });
 
 
